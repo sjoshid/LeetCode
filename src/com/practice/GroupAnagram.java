@@ -5,13 +5,15 @@ import java.util.*;
 public class GroupAnagram {
 
     public static void main(String[] args) {
+        GroupAnagram g = new GroupAnagram();
 
+        g.groupAnagrams(new String[]{"sujit","juits"});
     }
 
 
     public List<List<String>> groupAnagrams(String[] strs) {
 
-        Map<String, List<String>> m = new HashMap<String, List<String>>();
+        Map<String, List<String>> m = new HashMap<>();
 
         for (int i = 0; i < strs.length; i++) {
             String original = strs[i];
