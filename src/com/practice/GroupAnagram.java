@@ -6,9 +6,8 @@ public class GroupAnagram {
 
     public static void main(String[] args) {
         GroupAnagram g = new GroupAnagram();
-
-        g.groupAnagrams(new String[]{"sujit","juits"});
-        //random comment
+        List<List<String>> output = g.groupAnagrams(new String[]{"sujit","juits", "mad", "dam"});
+        System.out.print(output);
     }
 
 
