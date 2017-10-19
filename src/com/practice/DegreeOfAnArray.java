@@ -6,6 +6,7 @@ public class DegreeOfAnArray {
         DegreeOfAnArray d = new DegreeOfAnArray();
         int max = d.findShortestSubArray(new int []{2,1,1,2,1,3,3,3,1,3,1,3,2});
         System.out.print(max);
+        //random comment
     }
 
     public int findShortestSubArray(int[] nums) {
