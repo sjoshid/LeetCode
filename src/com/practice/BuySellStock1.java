@@ -17,7 +17,7 @@ public class BuySellStock1 {
         for (int i = 1; i < prices.length; i++) {
 
             if(prices[i] < low) {
-                low = prices[i] ;
+                low = prices[i];
             } else if(prices[i] > low && (prices[i] - low) > profit) {
                 profit = prices[i] - low;
             }

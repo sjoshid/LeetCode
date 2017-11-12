@@ -4,6 +4,7 @@ import java.util.*;
 
 public class Dijkstra {
 
+    //https://www.hackerrank.com/challenges/dijkstrashortreach/problem
     public static void main(String[] args) {
 
         Dijkstra dj = new Dijkstra();
@@ -51,7 +52,13 @@ public class Dijkstra {
             Set<Node> visitedNodes = new LinkedHashSet<>();
             visitedNodes.add(starting);
 
-            shortestPath(starting, visitedNodes);
+            Queue<Node> tobeVisited = new LinkedList<>();
+            tobeVisited.add(starting);
+
+            while(!tobeVisited.isEmpty()){
+                Node head = tobeVisited.poll();
+                shortestPath(head, tobeVisited, visitedNodes);
+            }
 
             for(int k = 1; k < nodes.length; k++){
                 if(k != s){
@@ -61,22 +68,23 @@ public class Dijkstra {
         }
     }
 
-    public void shortestPath(Node n, Set<Node> visitedNodes){
+    public void shortestPath(Node n, Queue<Node> tobeVisited, Set<Node> visitedNodes) {
 
-        for(Map.Entry<Node, Integer> neighborEntry: n.neighbors.entrySet()){
+        for (Map.Entry<Node, Integer> neighborEntry : n.neighbors.entrySet()) {
 
             Node neighbor = neighborEntry.getKey();
             Integer w = neighborEntry.getValue();
 
-            if(visitedNodes.add(neighbor)) {
-                int d = n.cd + w;
+            int d = n.cd + w;
+            neighbor.cd = Math.min(d, neighbor.cd);
 
-                neighbor.cd = Math.min(d, neighbor.cd);
-                shortestPath(neighbor, visitedNodes);
+            if (!visitedNodes.contains(neighbor)) {
+
+                tobeVisited.add(neighbor);
             }
         }
 
-        visitedNodes.remove(n);
+        visitedNodes.add(n);
     }
 
     class Node{
