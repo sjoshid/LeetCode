@@ -2,9 +2,11 @@ package com.practice;
 
 import java.util.*;
 
+/**
+ * //https://www.hackerrank.com/challenges/dijkstrashortreach/problem
+ */
 public class Dijkstra {
 
-    //https://www.hackerrank.com/challenges/dijkstrashortreach/problem
     public static void main(String[] args) {
 
         Dijkstra dj = new Dijkstra();

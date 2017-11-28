@@ -2,7 +2,9 @@ package com.practice;
 
 import com.practice.common.BSTNode;
 
-//https://leetcode.com/problems/binary-tree-right-side-view
+/**
+ * https://leetcode.com/problems/binary-tree-right-side-view
+ */
 public class PrintNodesSeenFromRightOfBST {
 
     int max;
@@ -18,8 +20,6 @@ public class PrintNodesSeenFromRightOfBST {
 
         PrintNodesSeenFromRightOfBST p = new PrintNodesSeenFromRightOfBST();
         p.printNodesSeenFromRight(root, 1);
-
-
     }
 
     private void printNodesSeenFromRight(BSTNode<String> node, int i){
