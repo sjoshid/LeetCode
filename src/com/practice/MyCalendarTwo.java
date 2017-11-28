@@ -1,6 +1,8 @@
+package com.practice;
+
 import java.util.TreeMap;
 
-class MyCalendarTwo {
+public class MyCalendarTwo {
 
     TreeMap<Integer, Integer> delta;
 
