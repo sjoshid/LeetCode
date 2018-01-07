@@ -1,51 +1,47 @@
 package com.practice;
 
-import java.util.HashSet;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.*;
 
 public class LengthOfLongestSubstring {
 
     public static void main(String[] args) {
         LengthOfLongestSubstring l = new LengthOfLongestSubstring();
-        l.lengthOfLongestSubstring("vfbb");
+        /*l.lengthOfLongestSubstring("vfbb");
+        l.lengthOfLongestSubstring("gvgd");
+        l.lengthOfLongestSubstring("bbbb");
+        l.lengthOfLongestSubstring("qweru");*/
+        l.lengthOfLongestSubstring("abcdebbbiopklwsz");
     }
 
     public int lengthOfLongestSubstring(String s) {
-        LinkedHashSet<Character> chars = new LinkedHashSet<>();
 
         if(s.isEmpty()) return 0;
-        chars.add(s.charAt(0));
-        int maxSize = 1;
+        List<Character> l = new ArrayList<>();
+
+        l.add(s.charAt(0));
+        int max = 1;
 
         for (int i = 1; i < s.length(); i++) {
-            char c = s.charAt(i);
+            Character c = s.charAt(i);
 
-            if(!chars.add(c)){
-                int currentSize = chars.size();
+            if(l.contains(c)){
+                if(l.size() > max) max = l.size();
 
-                if (currentSize > maxSize) {
-                    maxSize = currentSize;
+                List<Character> newList = new ArrayList<>();
+                int indexOfC = l.indexOf(c);
+
+                if(indexOfC < l.size() - 1) {
+                    newList = new ArrayList<>(l.subList(indexOfC + 1, l.size()));
                 }
 
-                Object [] charArray = chars.toArray();
-                if((char)charArray[0] == c){
-                    chars.remove(c);
-                    chars.add(c);
-                } else {
-
-                    chars = new LinkedHashSet<Character>();
-                    chars.add(c);
-                }
+                newList.add(c);
+                l = newList;
             } else {
-                int currentSize = chars.size();
-
-                if(currentSize > maxSize){
-                    maxSize = currentSize;
-                }
+                l.add(c);
             }
         }
 
-        return maxSize;
+        if(l.size() > max) max = l.size();
+        return max;
     }
 }
