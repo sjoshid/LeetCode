@@ -17,13 +17,13 @@ public class WildcardMatching {
 
             switch (pc) {
                 case '*':
-                    char charFromP = firstNonStartChar(p, pi);
+                    char nonStartChar = firstNonStartChar(p, pi);
 
-                    if(charFromP == '?') {
+                    if(nonStartChar == '?') {
                         pi = p.indexOf('?', pi);
-                    } else if (charFromP != ' ') {
+                    } else if (nonStartChar != ' ') {
                         String subStringFromS = s.substring(si, s.length() - 1);
-                        int index = starFound(subStringFromS, charFromP);
+                        int index = starFound(subStringFromS, nonStartChar);
 
                         if (index == -1) {
                             return false;
