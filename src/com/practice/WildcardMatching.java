@@ -68,7 +68,7 @@ class NonStartDetails {
     int index;
     char nonStarChar;
 
-    public NonStartDetails(int index, char nonStarChar){
+    NonStartDetails(int index, char nonStarChar){
         this.index = index;
         this.nonStarChar = nonStarChar;
     }
