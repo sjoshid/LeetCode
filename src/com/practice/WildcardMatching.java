@@ -3,6 +3,22 @@ package com.practice;
 public class WildcardMatching {
 
     public static void main(String[] args) {
+        WildcardMatching wcm = new WildcardMatching();
+        System.out.println(wcm.isMatch("aa","a?b"));
+        System.out.println(wcm.isMatch("aa","ab"));
+        System.out.println(wcm.isMatch("aa","a*"));
+        System.out.println(wcm.isMatch("aa","*a"));
+
+        System.out.println(wcm.isMatch("aa","a"));
+        System.out.println(wcm.isMatch("aa","aa"));
+        System.out.println(wcm.isMatch("aaa","aa"));
+        System.out.println(wcm.isMatch("aa", "*"));
+        System.out.println(wcm.isMatch("aa", "a*"));
+        System.out.println(wcm.isMatch("ab", "?*"));
+        System.out.println(wcm.isMatch("aab", "c*a*b"));
+
+        System.out.println("========");
+        System.out.println(wcm.isMatch("aab", "a*?*"));
 
     }
 
@@ -20,6 +36,7 @@ public class WildcardMatching {
                     NonStartDetails nonStartDetails = firstNonStartChar(p, pi);
 
                     if(nonStartDetails.nonStarChar == '?') {
+                        si = si + 1;
                         pi = nonStartDetails.index;
                     } else if (nonStartDetails.nonStarChar != ' ') {
                         String subStringFromS = s.substring(si, s.length() - 1);
@@ -28,9 +45,12 @@ public class WildcardMatching {
                         if (index == -1) {
                             return false;
                         } else {
-                            si = index;
+                            si = index + 1;
                             pi = nonStartDetails.index;
                         }
+                    } else {
+                        si = s.length() - 1;
+                        pi = p.length() - 1;
                     }
                     break;
                 case '?':
@@ -42,6 +62,10 @@ public class WildcardMatching {
 
             si++;
             pi++;
+        }
+
+        if((si == s.length() && pi < p.length()) || (si < s.length() && pi == p.length())) {
+            return false;
         }
         return true;
     }
