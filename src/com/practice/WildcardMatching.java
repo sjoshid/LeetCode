@@ -3,22 +3,6 @@ package com.practice;
 public class WildcardMatching {
 
     public static void main(String[] args) {
-        WildcardMatching wcm = new WildcardMatching();
-        System.out.println(wcm.isMatch("aa","a?b"));
-        System.out.println(wcm.isMatch("aa","ab"));
-        System.out.println(wcm.isMatch("aa","a*"));
-        System.out.println(wcm.isMatch("aa","*a"));
-
-        System.out.println(wcm.isMatch("aa","a"));
-        System.out.println(wcm.isMatch("aa","aa"));
-        System.out.println(wcm.isMatch("aaa","aa"));
-        System.out.println(wcm.isMatch("aa", "*"));
-        System.out.println(wcm.isMatch("aa", "a*"));
-        System.out.println(wcm.isMatch("ab", "?*"));
-        System.out.println(wcm.isMatch("aab", "c*a*b"));
-
-        System.out.println("========");
-        System.out.println(wcm.isMatch("aab", "a*?*"));
 
     }
 
@@ -27,16 +11,26 @@ public class WildcardMatching {
         int si = 0;
         int pi = 0;
 
+        if(s.isEmpty() && !p.isEmpty()) {
+            int i = 0;
+            while(i < p.length()) {
+
+                if(p.charAt(i) != '*')
+                    return false;
+                i++;
+            }
+            return true;
+        }
         while(si < s.length() && pi < p.length()){
             char sc = s.charAt(si);
             char pc = p.charAt(pi);
 
             switch (pc) {
                 case '*':
-                    NonStartDetails nonStartDetails = firstNonStartChar(p, pi);
+                    NonStartDetails nonStartDetails = lastNonStartChar(p, pi);
 
                     if(nonStartDetails.nonStarChar == '?') {
-                        si = si + 1;
+                        //si = si + 1;
                         pi = nonStartDetails.index;
                     } else if (nonStartDetails.nonStarChar != ' ') {
                         String subStringFromS = s.substring(si, s.length() - 1);
@@ -45,7 +39,11 @@ public class WildcardMatching {
                         if (index == -1) {
                             return false;
                         } else {
-                            si = index + 1;
+                            if(si == 0) {
+                                si = index + 1;
+                            } else {
+                                si = index + si;
+                            }
                             pi = nonStartDetails.index;
                         }
                     } else {
@@ -64,7 +62,7 @@ public class WildcardMatching {
             pi++;
         }
 
-        if((si == s.length() && pi < p.length()) || (si < s.length() && pi == p.length())) {
+        if((si == s.length() && pi < p.length() && p.charAt(p.length() - 1) != '*') || (si < s.length() && pi == p.length())) {
             return false;
         }
         return true;
@@ -75,10 +73,10 @@ public class WildcardMatching {
     }
 
     private int starFound (String subStringFromS, char charFromP) {
-        return subStringFromS.indexOf(charFromP);
+        return subStringFromS.lastIndexOf(charFromP);
     }
 
-    private NonStartDetails firstNonStartChar(String s, int startIndex) {
+    private NonStartDetails lastNonStartChar(String s, int startIndex) {
         for (int i = startIndex; i < s.length(); i++) {
             if(s.charAt(i) != '*') {
                 return new NonStartDetails(i, s.charAt(i));
