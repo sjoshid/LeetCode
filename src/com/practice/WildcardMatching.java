@@ -12,14 +12,14 @@ public class WildcardMatching {
         int pi = 0;
 
         if(s.isEmpty() && !p.isEmpty()) {
-            int i = 0;
-            while(i < p.length()) {
-
-                if(p.charAt(i) != '*')
-                    return false;
-                i++;
+            while(pi < p.length()) {
+                if(p.charAt(pi) != '*') return false;
+                pi++;
             }
             return true;
+        }
+        if(!s.isEmpty() && p.isEmpty()) {
+            return false;
         }
         while(si < s.length() && pi < p.length()){
             char sc = s.charAt(si);
@@ -33,14 +33,14 @@ public class WildcardMatching {
                         //si = si + 1;
                         pi = nonStartDetails.index;
                     } else if (nonStartDetails.nonStarChar != ' ') {
-                        String subStringFromS = s.substring(si, s.length() - 1);
+                        String subStringFromS = s.substring(si, s.length());
                         int index = starFound(subStringFromS, nonStartDetails.nonStarChar);
 
                         if (index == -1) {
                             return false;
                         } else {
                             if(si == 0) {
-                                si = index + 1;
+                                si = index;
                             } else {
                                 si = index + si;
                             }
@@ -62,7 +62,15 @@ public class WildcardMatching {
             pi++;
         }
 
-        if((si == s.length() && pi < p.length() && p.charAt(p.length() - 1) != '*') || (si < s.length() && pi == p.length())) {
+        if((si == s.length() && pi < p.length())) {
+            while(pi < p.length()) {
+                if(p.charAt(pi) != '*') return false;
+                pi++;
+            }
+            return true;
+        }
+
+        if((si < s.length() && pi == p.length())) {
             return false;
         }
         return true;
