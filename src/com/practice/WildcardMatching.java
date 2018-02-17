@@ -11,26 +11,44 @@ public class WildcardMatching {
         int si = 0;
         int pi = 0;
 
+        if(s.isEmpty() && !p.isEmpty()) {
+            while(pi < p.length()) {
+                if(p.charAt(pi) != '*') return false;
+                pi++;
+            }
+            return true;
+        }
+        if(!s.isEmpty() && p.isEmpty()) {
+            return false;
+        }
         while(si < s.length() && pi < p.length()){
             char sc = s.charAt(si);
             char pc = p.charAt(pi);
 
             switch (pc) {
                 case '*':
-                    NonStartDetails nonStartDetails = firstNonStartChar(p, pi);
+                    NonStartDetails nonStartDetails = lastNonStartChar(p, pi);
 
                     if(nonStartDetails.nonStarChar == '?') {
+                        //si = si + 1;
                         pi = nonStartDetails.index;
                     } else if (nonStartDetails.nonStarChar != ' ') {
-                        String subStringFromS = s.substring(si, s.length() - 1);
+                        String subStringFromS = s.substring(si, s.length());
                         int index = starFound(subStringFromS, nonStartDetails.nonStarChar);
 
                         if (index == -1) {
                             return false;
                         } else {
-                            si = index;
+                            if(si == 0) {
+                                si = index;
+                            } else {
+                                si = index + si;
+                            }
                             pi = nonStartDetails.index;
                         }
+                    } else {
+                        si = s.length() - 1;
+                        pi = p.length() - 1;
                     }
                     break;
                 case '?':
@@ -43,6 +61,18 @@ public class WildcardMatching {
             si++;
             pi++;
         }
+
+        if((si == s.length() && pi < p.length())) {
+            while(pi < p.length()) {
+                if(p.charAt(pi) != '*') return false;
+                pi++;
+            }
+            return true;
+        }
+
+        if((si < s.length() && pi == p.length())) {
+            return false;
+        }
         return true;
     }
 
@@ -51,10 +81,10 @@ public class WildcardMatching {
     }
 
     private int starFound (String subStringFromS, char charFromP) {
-        return subStringFromS.indexOf(charFromP);
+        return subStringFromS.lastIndexOf(charFromP);
     }
 
-    private NonStartDetails firstNonStartChar(String s, int startIndex) {
+    private NonStartDetails lastNonStartChar(String s, int startIndex) {
         for (int i = startIndex; i < s.length(); i++) {
             if(s.charAt(i) != '*') {
                 return new NonStartDetails(i, s.charAt(i));
