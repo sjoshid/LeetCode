@@ -11,6 +11,7 @@ public class AsteroidCollision {
 
 
     public static void main(String[] args) {
+	//testing git commit after git username change
 
         AsteroidCollision a = new AsteroidCollision();
        /* System.out.println(a.asteroidCollision(new int[]{-2, -1, 1, 2}));

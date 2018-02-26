@@ -13,9 +13,13 @@ public class WildcardMatchingTest extends TestCase {
     }
 
     public void testCase1() {
+        assertFalse(m.isMatch("zacabz", ""));
         assertFalse(m.isMatch("zacabz", "*a?b*"));
         assertTrue(m.isMatch("a", "a*"));
+        assertFalse(m.isMatch("a", "a*?"));
         assertTrue(m.isMatch("", "*"));
+        assertFalse(m.isMatch("", "*?"));
+        assertTrue(m.isMatch("hi", "*?"));
         assertTrue(m.isMatch("abefcdgiescdfimde", "ab*cd?i*de"));
         assertTrue(m.isMatch("aaaa","*a"));
         assertFalse(m.isMatch("aa","a?b"));

@@ -1,9 +1,9 @@
 package com.practice.common;
 
 public class BSTNode<V> {
-    private BSTNode left;
-    private BSTNode right;
-    private V value;
+    public BSTNode left;
+    public BSTNode right;
+    public V value;
 
     public BSTNode(V value){
         this.value = value;
