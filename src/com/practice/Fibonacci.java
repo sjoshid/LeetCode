@@ -25,6 +25,23 @@ public class Fibonacci {
         }
     }
 
+    private void fibonacciRecurse(int first, int second, int current, final int target){
+        if(current != target) {
+            int addition = first + second;
+            System.out.println(addition);
+            fibonacciRecurse(second, addition, ++current, target);
+        }
+    }
+
+    private void fibonacciLoop(int first, int second, int current, final int target){
+        while(current++ != target) {
+            int addition = first + second;
+            System.out.println(addition);
+
+            first = second;
+            second = addition;
+        }
+    }
 
     private int fib(int n){
 
