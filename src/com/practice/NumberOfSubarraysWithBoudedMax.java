@@ -13,6 +13,8 @@ public class NumberOfSubarraysWithBoudedMax {
                 int[] newA = Arrays.copyOfRange(A, 1, A.length - 1);
                 if(countSubarrays(newA, L, R, count)) {
                     count++;
+                } else {
+                    return false;
                 }
             } else {
                 return false;
