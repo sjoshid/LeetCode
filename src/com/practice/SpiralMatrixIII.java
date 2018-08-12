@@ -6,9 +6,7 @@ public class SpiralMatrixIII
     {
         int[][] newMatrix = buildSuperMatrix(R, C);
         insert1s(newMatrix, R, C);
-
-        return startTraversing(newMatrix, R, C, r0, c0);
-
+        return startTraversing(newMatrix, R, C, R + r0, C + c0);
     }
 
     private int[][] startTraversing(int[][] newMatrix, int R, int C, int startR, int startC)
@@ -19,12 +17,16 @@ public class SpiralMatrixIII
         int[][] locations = new int[R * C][];
         while(insertInLocation < locations.length)
         {
+            if(putOnlyValid(startR, startC, R, C, newMatrix, locations, insertInLocation))
+            {
+                insertInLocation++;
+            }
 
+            ctr++;
             if(dirFlag)
             {
                 //right and below
                 dirFlag = false;
-                ctr++;
                 for(int g = startC + 1; g <= startC + ctr; g++)
                 {
                     if(putOnlyValid(startR, g, R, C, newMatrix, locations, insertInLocation))
@@ -46,7 +48,6 @@ public class SpiralMatrixIII
             {
                 //left and up
                 dirFlag = true;
-                ctr++;
 
                 for(int g = startC - 1; g >= startC - ctr; g--)
                 {
