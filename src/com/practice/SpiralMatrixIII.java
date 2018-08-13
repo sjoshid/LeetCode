@@ -2,6 +2,12 @@ package com.practice;
 
 public class SpiralMatrixIII
 {
+    public static void main(String[] args)
+    {
+        SpiralMatrixIII s = new SpiralMatrixIII();
+        s.spiralMatrixIII(1, 4, 0, 0);
+    }
+
     public int[][] spiralMatrixIII(int R, int C, int r0, int c0)
     {
         int[][] newMatrix = buildSuperMatrix(R, C);
@@ -15,13 +21,14 @@ public class SpiralMatrixIII
         int ctr = 0;
         int insertInLocation = 0;
         int[][] locations = new int[R * C][];
+
+        if(putOnlyValid(startR, startC, R, C, newMatrix, locations, insertInLocation))
+        {
+            insertInLocation++;
+        }
+
         while(insertInLocation < locations.length)
         {
-            if(putOnlyValid(startR, startC, R, C, newMatrix, locations, insertInLocation))
-            {
-                insertInLocation++;
-            }
-
             ctr++;
             if(dirFlag)
             {
@@ -99,8 +106,8 @@ public class SpiralMatrixIII
 
     private int[][] buildSuperMatrix(int R, int C)
     {
-        int R3 = R * 3;
-        int C3 = C * 3;
+        int R3 = R * 10;
+        int C3 = C * 10;
         int[][] newMatrix = new int[R3][C3];
 
         for(int i = 0; i < R3; i++)
