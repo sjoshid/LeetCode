@@ -13,22 +13,22 @@ public class FindLCA {
         l.isIncreasingDigitsSequence(1224);
     }
 
-    public BSTNodeWithParent<Integer> findLCA(BSTNodeWithParent<Integer> n1, BSTNodeWithParent<Integer> n2){
+    public BSTNodeWithParent<Integer> findLCA(BSTNodeWithParent<Integer> n1, BSTNodeWithParent<Integer> n2) {
         Set<BSTNodeWithParent<Integer>> visitedNodes = new HashSet<>();
 
-        while(n1 != null || n2 != null){
+        while (n1 != null || n2 != null) {
             BSTNodeWithParent<Integer> parentOfN1 = n1.getParent();
             BSTNodeWithParent<Integer> parentOfN2 = n2.getParent();
 
-            if(parentOfN1 != null && parentOfN1.equals(parentOfN2)){
+            if (parentOfN1 != null && parentOfN1.equals(parentOfN2)) {
                 return parentOfN1;
             }
 
-            if(visitedNodes.contains(parentOfN1)){
+            if (visitedNodes.contains(parentOfN1)) {
                 return parentOfN1;
             }
 
-            if(visitedNodes.contains(parentOfN2)){
+            if (visitedNodes.contains(parentOfN2)) {
                 return parentOfN2;
             }
 
@@ -47,7 +47,7 @@ public class FindLCA {
         String nStr = Integer.toString(n);
         char[] chars = nStr.toCharArray();
         int p = -1;
-        for(char c: chars) {
+        for (char c : chars) {
             int v = c;
 
             if (v > p) {

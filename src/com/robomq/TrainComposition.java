@@ -9,7 +9,7 @@ public class TrainComposition {
     public void attachWagonFromLeft(int wagonId) {
         //throw new UnsupportedOperationException("Waiting to be implemented.");
         Wagon given = new Wagon(wagonId);
-        if(dummy == null) {
+        if (dummy == null) {
             l = given;
             r = given;
             dummy = given;
@@ -23,7 +23,7 @@ public class TrainComposition {
     public void attachWagonFromRight(int wagonId) {
         //throw new UnsupportedOperationException("Waiting to be implemented.");
         Wagon given = new Wagon(wagonId);
-        if(dummy == null) {
+        if (dummy == null) {
             l = given;
             r = given;
             dummy = given;
@@ -38,7 +38,7 @@ public class TrainComposition {
         //throw new UnsupportedOperationException("Waiting to be implemented.");
         int v = l.value;
         l = l.next;
-        if(l != null) l.pre = null;
+        if (l != null) l.pre = null;
         return v;
     }
 
@@ -46,7 +46,7 @@ public class TrainComposition {
         //throw new UnsupportedOperationException("Waiting to be implemented.");
         int v = r.value;
         r = r.pre;
-        if(r != null) r.next = null;
+        if (r != null) r.next = null;
         return v;
     }
 
@@ -64,9 +64,10 @@ class Wagon {
     Wagon next;
     int value;
 
-    Wagon(int value){
+    Wagon(int value) {
         this.value = value;
     }
-    Wagon(){
+
+    Wagon() {
     }
 }

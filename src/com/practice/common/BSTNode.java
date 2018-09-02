@@ -1,15 +1,15 @@
 package com.practice.common;
 
 public class BSTNode<V> {
-    public BSTNode left;
-    public BSTNode right;
+    public BSTNode<V> left;
+    public BSTNode<V> right;
     public V value;
 
-    public BSTNode(V value){
+    public BSTNode(V value) {
         this.value = value;
     }
 
-    public V getValue(){
+    public V getValue() {
         return value;
     }
 
@@ -21,11 +21,11 @@ public class BSTNode<V> {
         return right;
     }
 
-    public void setLeft(BSTNode leftNode){
+    public void setLeft(BSTNode leftNode) {
         this.left = leftNode;
     }
 
-    public void setRight(BSTNode rightNode){
+    public void setRight(BSTNode rightNode) {
         this.right = rightNode;
     }
 }

@@ -11,17 +11,17 @@ public class WildcardMatching {
         int si = 0;
         int pi = 0;
 
-        if(s.isEmpty() && !p.isEmpty()) {
-            while(pi < p.length()) {
-                if(p.charAt(pi) != '*') return false;
+        if (s.isEmpty() && !p.isEmpty()) {
+            while (pi < p.length()) {
+                if (p.charAt(pi) != '*') return false;
                 pi++;
             }
             return true;
         }
-        if(!s.isEmpty() && p.isEmpty()) {
+        if (!s.isEmpty() && p.isEmpty()) {
             return false;
         }
-        while(si < s.length() && pi < p.length()){
+        while (si < s.length() && pi < p.length()) {
             char sc = s.charAt(si);
             char pc = p.charAt(pi);
 
@@ -29,7 +29,7 @@ public class WildcardMatching {
                 case '*':
                     NonStartDetails nonStartDetails = lastNonStartChar(p, pi);
 
-                    if(nonStartDetails.nonStarChar == '?') {
+                    if (nonStartDetails.nonStarChar == '?') {
                         //si = si + 1;
                         pi = nonStartDetails.index;
                     } else if (nonStartDetails.nonStarChar != ' ') {
@@ -39,7 +39,7 @@ public class WildcardMatching {
                         if (index == -1) {
                             return false;
                         } else {
-                            if(si == 0) {
+                            if (si == 0) {
                                 si = index;
                             } else {
                                 si = index + si;
@@ -62,31 +62,31 @@ public class WildcardMatching {
             pi++;
         }
 
-        if((si == s.length() && pi < p.length())) {
-            while(pi < p.length()) {
-                if(p.charAt(pi) != '*') return false;
+        if ((si == s.length() && pi < p.length())) {
+            while (pi < p.length()) {
+                if (p.charAt(pi) != '*') return false;
                 pi++;
             }
             return true;
         }
 
-        if((si < s.length() && pi == p.length())) {
+        if ((si < s.length() && pi == p.length())) {
             return false;
         }
         return true;
     }
 
-    private boolean charFound (char s, char p) {
+    private boolean charFound(char s, char p) {
         return s == p;
     }
 
-    private int starFound (String subStringFromS, char charFromP) {
+    private int starFound(String subStringFromS, char charFromP) {
         return subStringFromS.lastIndexOf(charFromP);
     }
 
     private NonStartDetails lastNonStartChar(String s, int startIndex) {
         for (int i = startIndex; i < s.length(); i++) {
-            if(s.charAt(i) != '*') {
+            if (s.charAt(i) != '*') {
                 return new NonStartDetails(i, s.charAt(i));
             }
         }
@@ -98,7 +98,7 @@ class NonStartDetails {
     int index;
     char nonStarChar;
 
-    NonStartDetails(int index, char nonStarChar){
+    NonStartDetails(int index, char nonStarChar) {
         this.index = index;
         this.nonStarChar = nonStarChar;
     }

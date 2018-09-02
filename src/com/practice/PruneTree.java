@@ -8,19 +8,19 @@ import com.practice.common.BSTNode;
 public class PruneTree {
     public BSTNode<Integer> pruneTree(BSTNode<Integer> root) {
 
-        if(checkPrune(root) == 0) {
+        if (checkPrune(root) == 0) {
             //remove
             root = null;
         } else {
-            if(pruneTree(root.left) == null) root.left = null;
-            if(pruneTree(root.right) == null) root.right = null;
+            if (pruneTree(root.left) == null) root.left = null;
+            if (pruneTree(root.right) == null) root.right = null;
         }
         return root;
     }
 
     private int checkPrune(BSTNode<Integer> n) {
 
-        if(n != null) {
+        if (n != null) {
             return checkPrune(n.left) + checkPrune(n.right) + n.value;
         } else {
             return 0;

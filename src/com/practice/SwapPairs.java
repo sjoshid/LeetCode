@@ -35,7 +35,7 @@ public class SwapPairs {
     public ListNode swapPairs(ListNode<Integer> head) {
 
         if (head != null) {
-            if(head.next != null) {
+            if (head.next != null) {
                 ListNode<Integer> f = head;
                 ListNode<Integer> returnMe = head.next, s = head.next;
 
@@ -44,7 +44,7 @@ public class SwapPairs {
 
                     s.next = f;
                     if (nf != null) {
-                        if(nf.next != null) {
+                        if (nf.next != null) {
                             f.next = nf.next;
                         } else {
                             f.next = nf;

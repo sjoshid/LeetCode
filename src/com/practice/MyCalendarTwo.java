@@ -15,7 +15,7 @@ public class MyCalendarTwo {
         delta.put(end, delta.getOrDefault(end, 0) - 1);
 
         int active = 0, ans = 0;
-        for (int d: delta.values()) {
+        for (int d : delta.values()) {
             active += d;
             if (active >= 3) {
                 delta.put(start, delta.get(start) - 1);

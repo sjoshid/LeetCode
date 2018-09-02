@@ -1,6 +1,7 @@
 package com.practice;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class LengthOfLongestSubstring {
 
@@ -15,7 +16,7 @@ public class LengthOfLongestSubstring {
 
     public int lengthOfLongestSubstring(String s) {
 
-        if(s.isEmpty()) return 0;
+        if (s.isEmpty()) return 0;
         List<Character> l = new ArrayList<>();
 
         l.add(s.charAt(0));
@@ -24,13 +25,13 @@ public class LengthOfLongestSubstring {
         for (int i = 1; i < s.length(); i++) {
             Character c = s.charAt(i);
 
-            if(l.contains(c)){
-                if(l.size() > max) max = l.size();
+            if (l.contains(c)) {
+                if (l.size() > max) max = l.size();
 
                 List<Character> newList = new ArrayList<>();
                 int indexOfC = l.indexOf(c);
 
-                if(indexOfC < l.size() - 1) {
+                if (indexOfC < l.size() - 1) {
                     newList = new ArrayList<>(l.subList(indexOfC + 1, l.size()));
                 }
 
@@ -41,7 +42,7 @@ public class LengthOfLongestSubstring {
             }
         }
 
-        if(l.size() > max) max = l.size();
+        if (l.size() > max) max = l.size();
         return max;
     }
 }

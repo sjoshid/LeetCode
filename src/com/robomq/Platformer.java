@@ -2,8 +2,8 @@ package com.robomq;
 
 public class Platformer {
 
-   int[] tiles;
-   int position;
+    int[] tiles;
+    int position;
 
     public Platformer(int n, int position) {
         tiles = new int[n];
@@ -12,7 +12,7 @@ public class Platformer {
 
     public void jumpLeft() {
         int newPosition = position - 2;
-        while(tiles[newPosition] == -1){
+        while (tiles[newPosition] == -1) {
             newPosition--;
         }
         tiles[position] = -1;
@@ -21,7 +21,7 @@ public class Platformer {
 
     public void jumpRight() {
         int newPosition = position + 2;
-        while(tiles[newPosition] == -1){
+        while (tiles[newPosition] == -1) {
             newPosition++;
         }
         tiles[position] = -1;

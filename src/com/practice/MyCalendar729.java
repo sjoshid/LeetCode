@@ -3,7 +3,7 @@ package com.practice;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MyCalendar729{
+public class MyCalendar729 {
 
     private List<Booking> bookings;
 
@@ -22,9 +22,9 @@ public class MyCalendar729{
     public boolean book(int start, int end) {
         Booking newBooking = new Booking(start, end);
 
-        for(Booking booking: bookings){
+        for (Booking booking : bookings) {
 
-            if(checkClash(booking, newBooking)) {
+            if (checkClash(booking, newBooking)) {
                 return false;
             }
 
@@ -34,28 +34,28 @@ public class MyCalendar729{
         return true;
     }
 
-    private boolean checkClash(Booking booking, Booking toCheck){
+    private boolean checkClash(Booking booking, Booking toCheck) {
         int start = toCheck.start;
         int end = toCheck.end;
 
-        if(start == booking.start || (start < booking.end && start > booking.start)){
+        if (start == booking.start || (start < booking.end && start > booking.start)) {
             return true;
-        } else if(end < booking.end && end > booking.start) {
+        } else if (end < booking.end && end > booking.start) {
             return true;
         } else if (booking.start < end && booking.start > start) {
             return true;
-        } else if(booking.end < end && booking.end > start) {
+        } else if (booking.end < end && booking.end > start) {
             return true;
         }
         return false;
     }
 
 
-    class Booking{
+    class Booking {
         private int start;
         private int end;
 
-        Booking(int start, int end){
+        Booking(int start, int end) {
             this.start = start;
             this.end = end;
         }

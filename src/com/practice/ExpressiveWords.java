@@ -12,8 +12,8 @@ public class ExpressiveWords {
         List<Word> extendedLib = buildExtendedLib(S);
         int result = 0;
 
-        for (String word: words) {
-            if(isExpressiveWord(word, extendedLib)) {
+        for (String word : words) {
+            if (isExpressiveWord(word, extendedLib)) {
                 result++;
             }
         }
@@ -25,28 +25,28 @@ public class ExpressiveWords {
 
         char[] chars = word.toCharArray();
         int i = 0;
-        for(Word w: extendedLib) {
+        for (Word w : extendedLib) {
             String wc = w.s;
             boolean extended = w.extended;
 
             if (extended) {
                 int j = i + 1;
-                while(j < chars.length) {
-                    if(chars[i] == chars[j]){
+                while (j < chars.length) {
+                    if (chars[i] == chars[j]) {
                         j++;
                     } else {
                         break;
                     }
                 }
                 String repeatingLetters = word.substring(i, j);
-                if(repeatingLetters.length() <= wc.length()) {
+                if (repeatingLetters.length() <= wc.length()) {
                     i = j;
                 } else {
                     return false;
                 }
             } else {
                 String toCheck = word.substring(i, Math.min(i + w.length, word.length()));
-                if(!toCheck.equals(wc)) {
+                if (!toCheck.equals(wc)) {
                     return false;
                 }
                 i = i + w.length;
@@ -66,11 +66,11 @@ public class ExpressiveWords {
         while (i < s.length()) {
             char curr = s.charAt(i);
 
-            if(curr == prev) {
+            if (curr == prev) {
                 count++;
                 currentExtension = currentExtension.concat(String.valueOf(s.charAt(i)));
             } else {
-                if(currentExtension.length() > 2) {
+                if (currentExtension.length() > 2) {
                     Word newWord = new Word();
                     newWord.length = currentExtension.length();
                     newWord.extended = true;

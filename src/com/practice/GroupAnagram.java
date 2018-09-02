@@ -6,7 +6,7 @@ public class GroupAnagram {
 
     public static void main(String[] args) {
         GroupAnagram g = new GroupAnagram();
-        List<List<String>> output = g.groupAnagrams(new String[]{"sujit","juits", "mad", "dam"});
+        List<List<String>> output = g.groupAnagrams(new String[]{"sujit", "juits", "mad", "dam"});
         System.out.print(output);
     }
 
@@ -19,7 +19,7 @@ public class GroupAnagram {
             String original = strs[i];
             String sorted = sortString(original);
 
-            if(m.containsKey(sorted)) {
+            if (m.containsKey(sorted)) {
                 List<String> existing = m.get(sorted);
                 existing.add(original);
             } else {
@@ -31,7 +31,7 @@ public class GroupAnagram {
 
         List<List<String>> output = new ArrayList<List<String>>();
 
-        for (Map.Entry<String, List<String>> entry: m.entrySet()) {
+        for (Map.Entry<String, List<String>> entry : m.entrySet()) {
 
             List<String> mainList = entry.getValue();
             output.add(mainList);

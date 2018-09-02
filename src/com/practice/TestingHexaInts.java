@@ -4,14 +4,14 @@ import java.util.*;
 
 public class TestingHexaInts {
 
-    public static final int ORDERED    = 0x00000010;
+    public static final int ORDERED = 0x00000010;
 
     /**
      * Characteristic value signifying that, for each pair of
      * encountered elements {@code x, y}, {@code !x.equals(y)}. This
      * applies for example, to a Spliterator based on a {@link Set}.
      */
-    public static final int DISTINCT   = 0x00000001;
+    public static final int DISTINCT = 0x00000001;
 
     /**
      * Characteristic value signifying that encounter order follows a defined
@@ -25,7 +25,7 @@ public class TestingHexaInts {
      * @apiNote The spliterators for {@code Collection} classes in the JDK that
      * implement {@link NavigableSet} or {@link SortedSet} report {@code SORTED}.
      */
-    public static final int SORTED     = 0x00000004;
+    public static final int SORTED = 0x00000004;
 
     /**
      * Characteristic value signifying that the value returned from
@@ -39,14 +39,14 @@ public class TestingHexaInts {
      * those for {@link HashSet}, that cover a sub-set of elements and
      * approximate their reported size do not.
      */
-    public static final int SIZED      = 0x00000040;
+    public static final int SIZED = 0x00000040;
 
     /**
      * Characteristic value signifying that the source guarantees that
      * encountered elements will not be {@code null}. (This applies,
      * for example, to most concurrent collections, queues, and maps.)
      */
-    public static final int NONNULL    = 0x00000100;
+    public static final int NONNULL = 0x00000100;
 
     /**
      * Characteristic value signifying that the element source cannot be
@@ -57,7 +57,7 @@ public class TestingHexaInts {
      * {@link ConcurrentModificationException}) concerning structural
      * interference detected during traversal.
      */
-    public static final int IMMUTABLE  = 0x00000400;
+    public static final int IMMUTABLE = 0x00000400;
 
     /**
      * Characteristic value signifying that the element source may be safely

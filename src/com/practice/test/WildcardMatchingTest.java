@@ -8,7 +8,7 @@ public class WildcardMatchingTest extends TestCase {
     WildcardMatching m;
 
     @Override
-    public void setUp () {
+    public void setUp() {
         m = new WildcardMatching();
     }
 
@@ -21,17 +21,17 @@ public class WildcardMatchingTest extends TestCase {
         assertFalse(m.isMatch("", "*?"));
         assertTrue(m.isMatch("hi", "*?"));
         assertTrue(m.isMatch("abefcdgiescdfimde", "ab*cd?i*de"));
-        assertTrue(m.isMatch("aaaa","*a"));
-        assertFalse(m.isMatch("aa","a?b"));
-        assertFalse(m.isMatch("aa","ab"));
-        assertTrue(m.isMatch("aa","a***"));
+        assertTrue(m.isMatch("aaaa", "*a"));
+        assertFalse(m.isMatch("aa", "a?b"));
+        assertFalse(m.isMatch("aa", "ab"));
+        assertTrue(m.isMatch("aa", "a***"));
 
-        assertFalse(m.isMatch("aa","a"));
-        assertTrue(m.isMatch("aa","aa"));
-        assertFalse(m.isMatch("aaa","aa"));
-        assertTrue(m.isMatch("aa","*"));
-        assertTrue(m.isMatch("ab","?*"));
-        assertFalse(m.isMatch("aab","c*a*b"));
+        assertFalse(m.isMatch("aa", "a"));
+        assertTrue(m.isMatch("aa", "aa"));
+        assertFalse(m.isMatch("aaa", "aa"));
+        assertTrue(m.isMatch("aa", "*"));
+        assertTrue(m.isMatch("ab", "?*"));
+        assertFalse(m.isMatch("aab", "c*a*b"));
 
         assertTrue(m.isMatch("aab", "a*?*"));
         assertTrue(m.isMatch("ab", "?*******?"));
@@ -40,7 +40,7 @@ public class WildcardMatchingTest extends TestCase {
     }
 
     @Override
-    public void tearDown () {
+    public void tearDown() {
         m = null;
     }
 }

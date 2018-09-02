@@ -23,7 +23,7 @@ public class AllPathsFromSourceToTarget {
     private void paths(int node, int[][] graph, List<Integer> l) {
         List<Integer> nl = new ArrayList<>(l);
         nl.add(node);
-        if(node != graph.length - 1) {
+        if (node != graph.length - 1) {
             int[] neighbors = graph[node];
             for (int neighbor : neighbors) {
                 paths(neighbor, graph, nl);
