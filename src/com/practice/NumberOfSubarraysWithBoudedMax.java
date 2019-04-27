@@ -14,12 +14,12 @@ public class NumberOfSubarraysWithBoudedMax {
     }
 
     public boolean countSubarrays(int[] A, int L, int R, int count) {
-        if(A.length > 1) {
+        if (A.length > 1) {
             int element = A[0];
             if (element >= L && element <= R) {
                 count++;
                 int[] newA = Arrays.copyOfRange(A, 1, A.length - 1);
-                if(countSubarrays(newA, L, R, count)) {
+                if (countSubarrays(newA, L, R, count)) {
                     count++;
                 }
             } else {

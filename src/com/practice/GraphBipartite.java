@@ -20,7 +20,7 @@ public class GraphBipartite {
 
                 while (!stack.empty()) {
                     Integer node = stack.pop();
-                    for (int nei: graph[node]) {
+                    for (int nei : graph[node]) {
                         if (color[nei] == -1) {
                             stack.push(nei);
                             color[nei] = color[node] ^ 1;

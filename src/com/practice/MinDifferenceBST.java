@@ -18,7 +18,7 @@ public class MinDifferenceBST {
     public void minDiff(BSTNode<Integer> root) {
         if (root != null) {
             minDiff(root.getLeft());
-            if(prev == null) {
+            if (prev == null) {
                 prev = root.getValue();
             } else {
                 min = Math.min(min, root.getValue() - prev);

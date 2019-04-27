@@ -17,13 +17,13 @@ public class MinAscii {
         String ss1 = sortString(s1);
         String ss2 = sortString(s2);
 
-        if(ss1.equals(ss2)) {
+        if (ss1.equals(ss2)) {
             return 0;
         }
 
-        if(ss1.contains(ss2)){
+        if (ss1.contains(ss2)) {
             return calMim(ss1, ss2);
-        } else if(ss2.contains(ss1)) {
+        } else if (ss2.contains(ss1)) {
             return calMim(ss2, ss1);
         }
 
@@ -32,16 +32,16 @@ public class MinAscii {
         return cal(ss1, ss2);
     }
 
-    private int cal(String s1, String s2){
+    private int cal(String s1, String s2) {
 
         int sum = 0;
         int i = 0, j = 0;
 
-        for (;i < s1.length() && j < s2.length(); i++, j++) {
+        for (; i < s1.length() && j < s2.length(); i++, j++) {
             int c1 = s1.charAt(i);
             int c2 = s2.charAt(j);
 
-            if(c1 != c2) {
+            if (c1 != c2) {
                 sum += (c1 + c2);
             }
         }
@@ -59,17 +59,17 @@ public class MinAscii {
         return sum;
     }
 
-    private int calMim(String bigger, String smaller){
+    private int calMim(String bigger, String smaller) {
 
         int biggerSum = 0;
 
-        for (int c: bigger.toCharArray()) {
+        for (int c : bigger.toCharArray()) {
             biggerSum += c;
         }
 
         int smallerSum = 0;
 
-        for (int c: smaller.toCharArray()) {
+        for (int c : smaller.toCharArray()) {
             smallerSum += c;
         }
 

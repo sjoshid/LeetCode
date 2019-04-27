@@ -7,9 +7,9 @@ public class Factorial {
         System.out.println(f.getFactorial(6));
     }
 
-    public int getFactorial(int i){
+    public int getFactorial(int i) {
 
-        if(i == 1)
+        if (i == 1)
             return 1;
 
         return i * getFactorial(i - 1);
@@ -18,7 +18,7 @@ public class Factorial {
     public int getFactorial1(int i) {
         int cfact = i--;
 
-        while(i > 0){
+        while (i > 0) {
             cfact = cfact * i;
             i--;
         }

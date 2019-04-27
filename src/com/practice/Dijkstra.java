@@ -14,16 +14,16 @@ public class Dijkstra {
     }
 
 
-    public void startTestCases(){
+    public void startTestCases() {
 
         Scanner in = new Scanner(System.in);
         int t = in.nextInt();
-        for(int a0 = 0; a0 < t; a0++){
+        for (int a0 = 0; a0 < t; a0++) {
             int n = in.nextInt();
-            Node [] nodes = new Node[n + 1];
+            Node[] nodes = new Node[n + 1];
 
             int m = in.nextInt();
-            for(int a1 = 0; a1 < m; a1++){
+            for (int a1 = 0; a1 < m; a1++) {
                 int x = in.nextInt();
                 Node existing = nodes[x];
                 Node n1 = null;
@@ -57,13 +57,13 @@ public class Dijkstra {
             Queue<Node> tobeVisited = new LinkedList<>();
             tobeVisited.add(starting);
 
-            while(!tobeVisited.isEmpty()){
+            while (!tobeVisited.isEmpty()) {
                 Node head = tobeVisited.poll();
                 shortestPath(head, tobeVisited, visitedNodes);
             }
 
-            for(int k = 1; k < nodes.length; k++){
-                if(k != s){
+            for (int k = 1; k < nodes.length; k++) {
+                if (k != s) {
                     System.out.print(nodes[k].cd + " ");
                 }
             }
@@ -89,17 +89,17 @@ public class Dijkstra {
         visitedNodes.add(n);
     }
 
-    class Node{
+    class Node {
 
         int id;
         int cd = Integer.MAX_VALUE;
         Map<Node, Integer> neighbors = new HashMap<>();
 
-        Node(int id){
+        Node(int id) {
             this.id = id;
         }
 
-        public void addNeighbor(Node neighbor, Integer weight){
+        public void addNeighbor(Node neighbor, Integer weight) {
             neighbors.put(neighbor, weight);
         }
     }

@@ -5,10 +5,10 @@ import junit.framework.TestCase;
 
 public class TestExpressiveWords extends TestCase {
 
-        ExpressiveWords m;
+    ExpressiveWords m;
 
-        @Override
-        public void setUp () {
+    @Override
+    public void setUp() {
         m = new ExpressiveWords();
     }
 
@@ -21,29 +21,29 @@ public class TestExpressiveWords extends TestCase {
     public void testCase2() {
         m.buildExtendedLib("abc");
         int result = m.expressiveWords("hhhellllloo", new String[]{"helo", "hi", "heo"});
-        assertEquals(0 , result);
+        assertEquals(0, result);
     }
 
     public void testCase3() {
-        
+
         int result = m.expressiveWords("heeellooo", new String[]{"hello", "hi", "helo"});
         assertEquals(1, result);
     }
 
     public void testCase5() {
-        
+
         int result = m.expressiveWords("hheeellooo", new String[]{"hello", "hi", "helo"});
         assertEquals(0, result);
     }
 
     public void testCase6() {
-        
+
         int result = m.expressiveWords("heeellooo", new String[]{"hello", "hello", "helo"});
         assertEquals(2, result);
     }
 
     public void testCase7() {
-        
+
         int result = m.expressiveWords("a", new String[]{"ahhh", "hello", "helo"});
         assertEquals(0, result);
     }
@@ -61,7 +61,6 @@ public class TestExpressiveWords extends TestCase {
     }
 
 
-
     public void testCase10() {
 
         int result = m.expressiveWords("ggkyyyyffffbbhddddrxxsiixccqqqqkmmmiiiiiivvvyyuuujccuuuhhhhwssssnnttoyuuuussggttttfeeeebbbbeedddddqq", new String[]{"ggkyyyfffbbhdddrxxsiixccqqkmmmiiiiivvyyuuujccuuuhhwssnnttoyussggtttfeeebbeeddddqq"});
@@ -75,7 +74,7 @@ public class TestExpressiveWords extends TestCase {
     }
 
     @Override
-    public void tearDown () {
+    public void tearDown() {
         m = null;
     }
 }

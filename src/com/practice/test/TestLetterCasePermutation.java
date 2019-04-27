@@ -10,7 +10,7 @@ public class TestLetterCasePermutation extends TestCase {
     LetterCasePermutation m;
 
     @Override
-    public void setUp () {
+    public void setUp() {
         m = new LetterCasePermutation();
     }
 
@@ -58,7 +58,7 @@ public class TestLetterCasePermutation extends TestCase {
     }
 
     @Override
-    public void tearDown () {
+    public void tearDown() {
         m = null;
     }
 }

@@ -4,7 +4,7 @@ public class BSTNodeWithParent<V> {
     private BSTNodeWithParent parent;
     private V value;
 
-    public BSTNodeWithParent(V value){
+    public BSTNodeWithParent(V value) {
         this.value = value;
     }
 
@@ -16,7 +16,7 @@ public class BSTNodeWithParent<V> {
         this.parent = parent;
     }
 
-    public V getValue(){
+    public V getValue() {
         return value;
     }
 }

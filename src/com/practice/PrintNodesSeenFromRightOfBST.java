@@ -22,11 +22,11 @@ public class PrintNodesSeenFromRightOfBST {
         p.printNodesSeenFromRight(root, 1);
     }
 
-    private void printNodesSeenFromRight(BSTNode<String> node, int i){
+    private void printNodesSeenFromRight(BSTNode<String> node, int i) {
 
-        if(node != null) {
+        if (node != null) {
             if (node.getRight() == null && node.getLeft() == null) {
-                if(i > max){
+                if (i > max) {
                     System.out.println(node.getValue());
                     max = i;
                 }

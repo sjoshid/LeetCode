@@ -2,7 +2,7 @@ package com.robomq;
 
 public final class Utilities {
 
-    private Utilities(){
+    private Utilities() {
 
     }
 
