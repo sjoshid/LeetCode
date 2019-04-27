@@ -1,6 +1,12 @@
 package com.practice.unsolved;
 
 public class MinimumDeleteSum {
+    public static void main(String[] args) {
+        MinimumDeleteSum d = new MinimumDeleteSum();
+        d.minimumDeleteSum("t", "e");
+    }
+
+
     public int minimumDeleteSum(String s1, String s2) {
         int[][] dp = new int[s1.length() + 1][s2.length() + 1];
 

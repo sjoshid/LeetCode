@@ -18,6 +18,7 @@ public class StoneGame {
         } else {
 
         }
+        return false;
     }
 
     public static void main(String[] args) {

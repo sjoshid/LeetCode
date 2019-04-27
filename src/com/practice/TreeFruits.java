@@ -1,49 +1,60 @@
 package com.practice;
 
-import java.util.HashSet;
+import java.util.Collection;
 import java.util.Iterator;
-import java.util.LinkedHashSet;
-import java.util.Set;
+import java.util.LinkedHashMap;
+import java.util.Map;
 
 /**
  * This fails some test cases.
+ * WORST Problem I have faced so far. Ugh!!
  */
 public class TreeFruits {
     public int totalFruit(int[] tree) {
-        Set<Integer> uniqTypes = new LinkedHashSet<>(2);
+        Map<Integer, Integer> uniq = new LinkedHashMap<>();
         int totalMax = 0;
-        int total = 0;
         for (int i = 0; i < tree.length; i++) {
 
             int ft = tree[i];
 
-            if(uniqTypes.contains(ft)) {
-                total++;
+            if (uniq.containsKey(ft)) {
+                Integer v = uniq.get(ft);
+                Integer incr = v + 1;
+                uniq.put(ft, incr);
             } else {
-                if (uniqTypes.size() < 2) {
-                    uniqTypes.add(ft);
-
-                    total++;
+                if (uniq.size() < 2) {
+                    uniq.put(ft, 1);
                 } else {
+                    Collection<Integer> vs = uniq.values();
+                    Iterator<Integer> itr = vs.iterator();
+                    Integer ct = 0;
+                    while (itr.hasNext()) {
+                        ct += itr.next();
+                    }
                     //start over
-                    totalMax = Math.max(total, totalMax);
-                    Iterator<Integer> itr = uniqTypes.iterator();
-                    itr.next(); Integer last = itr.next();
-                    uniqTypes.clear();
-                    uniqTypes.add(last);
-                    uniqTypes.add(ft);
-                    total = 2;
+                    totalMax = Math.max(ct, totalMax);
+                    Integer keyNeed = tree[i - 1];
+                    Integer valueNeed = uniq.get(keyNeed);
+                    uniq = new LinkedHashMap<>();
+                    uniq.put(keyNeed, 1);
+                    uniq.put(ft, 1);
 
                 }
             }
         }
 
-        return Math.max(total, totalMax);
+        Collection<Integer> vs = uniq.values();
+        Iterator<Integer> itr = vs.iterator();
+        Integer ct = 0;
+        while (itr.hasNext()) {
+            ct += itr.next();
+        }
+        return Math.max(ct, totalMax);
     }
 
     public static void main(String[] args) {
         TreeFruits tf = new TreeFruits();
-        int [] lkjaf = new int[]{3,3,3,1,2,1,1,2,3,3,4};
+        int[] lkjaf = new int[]{0, 1, 6, 6, 4, 4, 6};
         tf.totalFruit(lkjaf);
     }
 }
