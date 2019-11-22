@@ -1,48 +1,77 @@
 package com.practice;
 
-import java.util.HashSet;
-import java.util.Set;
-
+/**
+ * https://leetcode.com/problems/next-closest-time/
+ */
 public class NextClosestTime {
-    public String nextClosestTime(String time) {
-        Set<Integer> uniq = new HashSet<>();
-        for (int i = 0; i < time.length(); i++) {
-            if (time.charAt(i) != ':') {
-                Integer t = Integer.parseInt(time.substring(i, i + 1));
-                uniq.add(t);
-            }
-        }
+	public String nextClosestTime(String time) {
 
-        String[] splitTime = time.split(":");
-        Integer min = Integer.parseInt(splitTime[1]);
-        Integer hrs = Integer.parseInt(splitTime[0]);
+		int hrs = Integer.parseInt(time.substring(0, 2));
+		int mins = Integer.parseInt(time.substring(3, 5));
 
-        int cm = 0;
 
-        while (true) {
-            int l = Integer.parseInt(time.substring(time.length() - 1));
-            int sl = Integer.parseInt(time.substring(time.length() - 2, time.length() - 1));
-            int tl = Integer.parseInt(time.substring(time.length() - 3, time.length() - 2));
-            int fl = Integer.parseInt(time.substring(time.length() - 4, time.length() - 3));
+		while (true) {
+			mins++;
 
-            l += 1;
-            if (l > 9) {
-                l = 0;
-                sl += 1;
-            }
+			if (mins == 60) {
+				mins = 0;
+				hrs++;
+			}
+			// check(hrs, mins, time);
+			if (hrs == 24) {
+				hrs = 0;
+			}
+			String hrsStr = Integer.toString(hrs);
+			if (hrsStr.length() == 1) {
+				hrsStr = "0" + hrsStr;
+			}
+			String minsStr = Integer.toString(mins);
+			if (minsStr.length() == 1) {
+				minsStr = "0" + minsStr;
+			}
+			String newTime = hrsStr + ":" + minsStr;
 
-            if (sl == 6 && l == 0) {
-                l = 0;
-                sl = 0;
-                tl += 1;
-            }
+			if (check(hrsStr, minsStr, time)) {
+				return newTime;
+			}
+			if (time.equals(newTime)) {
+				return time;
+			}
+		}
+	}
 
-            if (tl > 9) {
-                tl = 0;
-                fl += 1;
-            }
+	boolean check(String hrsStr, String minsStr, String time) {
 
-        }
+		boolean isHrs = true;
 
-    }
+		for (int i = 0; i < hrsStr.length(); i++) {
+			String c = hrsStr.substring(i, i + 1);
+
+			if (!time.contains(c)) {
+				isHrs = false;
+				break;
+			}
+		}
+		boolean isMins = true;
+		if (isHrs) {
+			for (int i = 0; i < minsStr.length(); i++) {
+				String c = minsStr.substring(i, i + 1);
+
+				if (!time.contains(c)) {
+					isMins = false;
+					break;
+				}
+			}
+		}
+		if (isHrs && isMins) {
+			return true;
+		}
+		return false;
+	}
+
+	public static void main(String[] args) {
+
+		NextClosestTime nct = new NextClosestTime();
+		nct.nextClosestTime("01:01");
+	}
 }
